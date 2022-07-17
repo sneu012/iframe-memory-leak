@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <title>Test Ads</title>
+</header>
+
+<body>
+    <iframe width="100%" id="ads-iframe" src="random-ad?embedded"></iframe>
+</body>
+
+<script>
+
+    const addIframe = () => {
+        const newIframe = document.createElement("iframe");
+        newIframe.width = "100%"
+        newIframe.id = "ads-iframe"
+        newIframe.src = "random-ad?embedded"
+        setTimeout(() => {
+            document.body.appendChild(newIframe)
+        }, 2000)
+        
+    }
+
+
+    const deleteAndAddIframe = () => {
+        const iframeElement = document.getElementById("ads-iframe")
+        iframeElement.parentNode.removeChild(iframeElement);
+        addIframe();
+    }
+
+    const deleteAllItemsInBodyAndAddIFrame = () => {
+        document.body.innerHTML = '';
+        addIframe();
+    }
+
+    const changeIframeSrc = () => {
+        const iframeElement = document.getElementById("ads-iframe")
+        iframeElement.src = "";
+        setTimeout(() => {
+            iframeElement.src = "random-ad?embedded";
+        }, 1000)
+    }
+
+    const reloadWrapper = () => {
+        window.location.reload();
+    }
+
+
+    setInterval(() => {
+        deleteAndAddIframe();
+        // deleteAllItemsInBodyAndAddIFrame();
+    }, 10000)
+    
+</script>
+</html>
